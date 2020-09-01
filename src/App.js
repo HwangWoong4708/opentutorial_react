@@ -1,17 +1,6 @@
 import React from "react";
 import "./App.css";
 
-class Subject extends React.Component {
-  render() {
-    return (
-      <header>
-        <h1>WEB</h1>
-        world wide web!
-      </header>
-    );
-  }
-}
-
 class Nav extends React.Component {
   render() {
     return (
@@ -36,8 +25,8 @@ class Article extends React.Component {
   render() {
     return (
       <article>
-        <h2>HTML</h2>
-        HTML is HyperText Markup Language.
+        <h2>{this.props.title}</h2>
+        {this.props.desc}
       </article>
     );
   }
@@ -47,12 +36,24 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Subject />
+        <Subject title="WEB" sub="world wide web!" />
+        <Subject title="REACT" sub="for UI" />
         <Nav />
-        <Article />
+        <Article title="HTML" desc="HTML is HyperText Markup Language." />
       </div>
     );
   }
 }
 
 export default App;
+
+class Subject extends React.Component {
+  render() {
+    return (
+      <header>
+        <h1>{this.props.title}</h1>
+        <h3>{this.props.sub}</h3>
+      </header>
+    );
+  }
+}
