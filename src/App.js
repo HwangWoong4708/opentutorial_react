@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: "welcome",
+      mode: "read",
       subject: { title: "WEB", sub: "world wide web!" }, //스테이트를 이용해서 초깃값 정해줌.
       welcome: { title: "Welcome", desc: "Hello, React!" },
       contents: [
@@ -30,10 +30,27 @@ class App extends React.Component {
     }
     return (
       <div className="App">
-        <Subject
+        {/* <Subject
           title={this.state.subject.title} //처음 선언한 스테이트값을 Subject컴포넌트에 props로 전해줌.
           sub={this.state.subject.sub}
-        />
+        />*/}
+        <header>
+          <h1>
+            <a
+              href="/"
+              onClick={function (e) {
+                console.log(e);
+                e.preventDefault();
+                this.setState({
+                  mode: "welcome",
+                });
+              }.bind(this)}
+            >
+              {this.state.subject.title}
+            </a>
+          </h1>
+          <h3>{this.state.subject.sub}</h3>
+        </header>
         <Nav data={this.state.contents} />
         <Article title={_title} desc={_desc} />
       </div>
